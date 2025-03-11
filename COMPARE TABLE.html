@@ -1,0 +1,342 @@
+<style>
+    /* Primary Colors */
+    :root {
+        --background-base-color: #FFF8E7;
+        --primary-text-color: #78350F;
+        --accent-border-color: #92400E;
+
+        /* Secondary Colors */
+        --header-background: #F7EDC7;
+        --alternate-row-background: #FFFBEB;
+        --hover-state: #FEF3C7;
+        --inner-borders-dividers: #D4A86C;
+
+        /* Interactive Elements */
+        --button-background: #FFF8E7;
+        --button-hover: #FEF3C7;
+        --button-border: #92400E;
+        --selected-state: #F7EDC7;
+
+        /* Additional Accent Colors */
+        --call-to-action: #B45309;
+        --success-confirmation: #065F46;
+        --alert-important: #9C2424;
+
+        /* Typography */
+        --font-family: "Times New Roman", Georgia, serif;
+        --font-color-primary: #78350F;
+        --font-color-emphasis: #5F2A08;
+    }
+
+    /* Comparison Table Styles */
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px auto;
+        text-align: left;
+        font-family: var(--font-family);
+        color: var(--font-color-primary);
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 8px;
+        border-bottom: 1px solid var(--inner-borders-dividers);
+    }
+
+    .comparison-table th {
+        background-color: var(--header-background);
+        font-weight: bold;
+        text-align: left;
+        color: var(--font-color-emphasis);
+    }
+
+    .comparison-table tr:nth-child(even) {
+        background-color: var(--alternate-row-background);
+    }
+
+    .comparison-table th:first-child {
+        border-top-left-radius: 8px;
+    }
+
+    .comparison-table th:last-child {
+        border-top-right-radius: 8px;
+    }
+
+    .comparison-table tr:last-child td:first-child {
+        border-bottom-left-radius: 8px;
+    }
+
+    .comparison-table tr:last-child td:last-child {
+        border-bottom-right-radius: 8px;
+    }
+
+    .comparison-table .yes {
+        color: var(--success-confirmation);
+        text-align: center;
+    }
+
+    .comparison-table .no {
+        color: var(--alert-important);
+        text-align: center;
+    }
+
+    .comparison-table .cem-link {
+        text-align: center;
+    }
+
+    .comparison-table .cem-link a {
+        color: var(--call-to-action); /* Use call to action color */
+        text-decoration: none;
+        display: block;
+        padding: 5px;
+    }
+</style>
+
+<h2>Comparisition Table - Delhi DGPO</h2>
+
+<table class="comparison-table">
+    <thead>
+        <tr>
+            <th>HO</th>
+            <th>Question ID</th>
+            <th>Parameter</th>
+            <th>Questions</th>
+            <th>Response Type</th>
+            <th>Response in 2023 (Dummy)</th>
+            <th>Response in 2024 (Dummy)</th>
+            <th>CEM</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DGPO</td>
+            <td>A.1.1</td>
+            <td>Post Office Infrastructure</td>
+            <td>Check the accommodation - Is the building structurally sound, with no visible cracks, leaning, or signs of damage?</td>
+            <td>Y/N</td>
+            <td class="yes">Yes</td>
+            <td class="no">No</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.1.2</td>
+            <td>Post Office Infrastructure</td>
+            <td>Check the accommodation - Are the walls, floors, ceilings, staircases etc are in good condition?</td>
+            <td>Y/N</td>
+            <td class="no">No</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.1.3</td>
+            <td>Post Office Infrastructure</td>
+            <td>Are fire safety measures (e.g., fire extinguishers, smoke detectors, fire exits) in place and functional?</td>
+            <td>Y/N</td>
+            <td class="yes">Yes</td>
+            <td class="no">No</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.1.4</td>
+            <td>Post Office Infrastructure</td>
+            <td>Are there adequate emergency exits, and are they clearly marked and unobstructed?</td>
+            <td>Y/N</td>
+            <td class="no">No</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.2.1</td>
+            <td>Post Office Infrastructure</td>
+            <td>Is there proper waste disposal and drainage systems in place?</td>
+            <td>Y/N</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.3.1</td>
+            <td>Post Office Infrastructure</td>
+            <td>Are there sufficient functional toilets, bathrooms, and washing facilities?</td>
+            <td>Y/N</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.5.1</td>
+            <td>Customer Service & Information</td>
+            <td>Is there a Helpdesk available?</td>
+            <td>Y/N</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.5.2</td>
+            <td>Customer Service & Information</td>
+            <td>Can the Helpdesk access all required information online?</td>
+            <td>Y/N</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.5.3</td>
+            <td>Customer Service & Information</td>
+            <td>Is the Helpdesk fully equipped with necessary forms and ready reckoners?</td>
+            <td>Y/N</td>
+            <td class="yes">Yes</td>
+            <td class="no">No</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.5.4</td>
+            <td>Customer Service & Information</td>
+            <td>Is there a self-service kiosk available & functional?</td>
+            <td>Y/N</td>
+            <td class="no">No</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.5.5</td>
+            <td>Customer Service & Information</td>
+            <td>Are all counter assistants competent in handling customer queries and services?</td>
+            <td>Y/N</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.5.6</td>
+            <td>Customer Service & Information</td>
+            <td>Is the Notice of Business Hours clearly displayed?</td>
+            <td>Y/N</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.5.7</td>
+            <td>Customer Service & Information</td>
+            <td>Are the counters arranged logically as per the available space?</td>
+            <td>Y/N</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.5.8</td>
+            <td>Customer Service & Information</td>
+            <td>Are forms, records, and stock properly segregated?</td>
+            <td>Y/N</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.6.1</td>
+            <td>Cleanliness & Hygiene</td>
+            <td>Are the counters and office spaces clean?</td>
+            <td>Y/N</td>
+            <td class="yes">Yes</td>
+            <td class="no">No</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.6.2</td>
+            <td>Cleanliness & Hygiene</td>
+            <td>Does the Postmaster take a special interest in cleanliness?</td>
+            <td>Y/N</td>
+            <td class="no">No</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.7.1</td>
+            <td>Customer Service & Information</td>
+            <td>Is there a sufficient stock of essential forms for public use?</td>
+            <td>Y/N</td>
+            <td class="no">No</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.7.2</td>
+            <td>Customer Service & Information</td>
+            <td>Are counter assistants aware of the importance of good public relations?</td>
+            <td>Y/N</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.7.3</td>
+            <td>Customer Service & Information</td>
+            <td>Are special arrangements available for senior citizens?</td>
+            <td>Y/N</td>
+            <td class="no">No</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.9.1</td>
+            <td>Customer Service & Information</td>
+            <td>Is there an LCD panel available for customer information?</td>
+            <td>Y/N</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+        <tr>
+            <td>DGPO</td>
+            <td>A.9.2</td>
+            <td>Customer Service & Information</td>
+            <td>Are the contents displayed on the LCD panel relevant and up-to-date?</td>
+            <td>Y/N</td>
+            <td class="no">No</td>
+            <td class="yes">Yes</td>
+            <td class="cem-link"></td>
+        </tr>
+    </tbody>
+</table>
+<script>
+    const table = document.querySelector('.comparison-table');
+
+    // Get all rows in the table body
+    const rows = table.querySelectorAll('tbody tr');
+
+    // Loop through each row
+    rows.forEach(row => {
+        // Get the 'Response in 2024' cell
+        const response2024Cell = row.querySelector('td:nth-child(7)'); // 7th cell is 'Response in 2024'
+        const cemCell = row.querySelector('td.cem-link'); // The CEM cell
+
+        // Check if the 'Response in 2024' cell has the class 'no'
+        if (response2024Cell && response2024Cell.classList.contains('no')) {
+            // If 'Response in 2024' is 'No', add the link to the CEM cell
+            cemCell.innerHTML = '<a href="#">CLICK HERE TO ACCESS CEM</a>';
+        }
+    });
+</script>

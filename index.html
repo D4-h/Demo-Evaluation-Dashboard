@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Office Evaluation Demo Dashboard - Search Results</title>
+    <style>
+        /* Color Palette (Based on description) */
+        :root {
+            --bg-offwhite: #FFF8E7;
+            --brand-red: #9C2424;
+            --brand-yellow: #B45309;
+            --text-darkgray: #78350F;
+            --border-lightgray: #D4A86C;
+            --bg-lightgray: #FFFBEB;
+            --bg-hover: #FEF3C7;
+        }
+
+        /* General Styles */
+        body {
+            font-family: serif;
+            background-color: var(--bg-offwhite);
+            margin: 0;
+            padding: 0;
+            color: var(--text-darkgray);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            box-sizing: border-box; /* Important for padding */
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-lightgray);
+            margin-bottom: 20px;
+            background-color: var(--header-bg);
+        }
+
+        .header h1 {
+            color: var(--brand-red);
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            border: 1px solid var(--border-lightgray);
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        .search-bar button {
+            background-color: var(--bg-offwhite);
+            color:  #5F2A08;
+            border: 1px solid var(--border-lightgray);
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filter-button {
+            background-color: var(--bg-offwhite);
+            color: var(--text-darkgray);
+            border: 1px solid var(--border-lightgray);
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .filter-button:hover {
+            background-color: var(--bg-hover);
+        }
+
+        .main-content {
+            display: flex;
+            gap: 20px;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--bg-offwhite);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar li a { /* NEW: Style the links in the sidebar */
+           color: var(--text-darkgray); /* set to your preferred color */
+           text-decoration: none;   /* remove the underline  */
+           display: block; /* make the whole list item clickable */
+           padding: 5px 0; /* Add some space above and below */
+        }
+
+        .sidebar li a:hover {
+            text-decoration: underline;  /* Add underline on hover */
+        }
+        .sidebar a {
+            color: var(--text-darkgray);
+            text-decoration: none;
+        }
+
+        .search-results {
+            flex-grow: 1;
+            background-color: var(--bg-offwhite);
+            padding: 15px;
+            border-radius: 10px;
+            overflow-x: auto; /* Enable horizontal scrolling for wider tables */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-lightgray);
+        }
+
+        th {
+            background-color: #F7EDC7;
+            color:  #5F2A08;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--bg-lightgray);
+        }
+
+        tr:hover {
+            background-color: var(--bg-hover);
+        }
+
+        /* Status Colors */
+        .status-pass { color: #065F46; }
+        .status-needs-improvement { color: var(--brand-yellow); }
+        .status-fail { color: var(--brand-red); }
+
+        /* Utility Classes (for responsiveness - very basic) */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .search-results {
+                overflow-x: scroll; /* Allow horizontal scroll on small screens */
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Logo styling (replace with your logo's actual URL or base64 data) */
+        .logo {
+            width: 120px; /* Increased logo size */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 20px;  /* Add space between logo and title */
+            vertical-align: middle; /* Added vertical alignment */
+        }
+        .header{
+            display: flex;
+            align-items: center; /* Vertically align items at the center */
+            justify-content: space-between;  /* Updated */
+            background-color: #F7EDC7;
+        }
+        .circle-options {
+            display: none; /* Initially hidden */
+            position: absolute;  /* Or 'relative' if you prefer inline */
+            background-color: var(--bg-offwhite);
+            border: 1px solid var(--border-lightgray);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+            z-index: 10; /* Ensure it appears above other elements */
+            flex-direction: column;
+            gap: 5px;
+            max-height: 200px; /* Adjust as needed */
+            overflow-y: auto;  /* Scroll if needed */
+            width: 200px;       /* Or adjust */
+            }
+            .filter-button.active {
+                background-color: #F7EDC7; /* Use your desired active state color */
+                color:  #5F2A08;
+            }
+            .circle-options button {
+            background-color: var(--bg-offwhite);
+            color: var(--text-darkgray);
+            border: 1px solid var(--border-lightgray);
+            padding: 5px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            text-align: left;  /* Left-align button text */
+            display: block;     /* Make them fill the width */
+            width: 100%;        /* Ensure they fill the container */
+            box-sizing: border-box; /* Include padding and border in width */
+        }
+
+        .circle-options button:hover {
+            background-color: var(--bg-hover);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://images.seeklogo.com/logo-png/30/2/india-post-logo-png_seeklogo-304806.png" alt="Logo" class="logo">
+            <h1>Post Office Evaluation Dashboard</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button>Search</button>
+            </div>
+        </div>
+
+        <div class="filters">
+            <button class="filter-button" id="circleFilter">Circle</button>
+            <button class="filter-button">Division</button>
+            <button class="filter-button">More Filters</button>
+             <div class="circle-options" id="circleOptions">
+            <!-- Circle options will be added dynamically by JavaScript -->
+        </div>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <h2>Recently Inspected Offices</h2>
+                <ul>
+                    <li><a href="DELHI GPO REPORT CARD V1.HTML" target = "_blank">Delhi Post Office</a></li>
+                    <li><a href="#">Mumbai GPO</a></li>
+                    <li><a href="#">Chennai Central PO</a></li>
+                    <li><a href="#">Kolkata Main PO</a></li>
+                    <li><a href="#">Bangalore GPO</a></li>
+                </ul>
+            </div>
+
+            <div class="search-results">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Office Name</th>
+                            <th>Location</th>
+                            <th>Inspection Date</th>
+                            <th>Overall Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="C:\Users\X13\Music\india post html\DELHI GPO REPORT CARD V1.HTML" target = "_blank">Delhi Post Office</a></td>
+                            <td>New Delhi</td>
+                            <td>2024-01-15</td>
+                            <td>92/100</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Mumbai GPO</a></td>
+                            <td>Mumbai</td>
+                            <td>2023-12-20</td>
+                            <td>78/100</td>
+                        </tr>
+                         <tr>
+                            <td><a href="#">Kolkata Main PO</a></td>
+                            <td>Kolkata</td>
+                            <td>2023-11-10</td>
+                            <td>65/100</td>
+                        </tr>
+                         <tr>
+                            <td><a href="#">Chennai Central PO</a></td>
+                            <td>Chennai</td>
+                            <td>2023-10-05</td>
+                            <td>50/100</td>
+                        </tr>
+                         <tr>
+                            <td><a href="#">Hyderabad GPO</a></td>
+                            <td>Hyderabad</td>
+                            <td>2023-09-18</td>
+                            <td>85/100</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Ahmedabad GPO</a></td>
+                            <td>Ahmedabad</td>
+                            <td>2023-08-22</td>
+                            <td>70/100</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Pune Head Post Office</a></td>
+                            <td>Pune</td>
+                            <td>2023-07-05</td>
+                            <td>95/100</td>
+                        </tr>
+                         <tr>
+                            <td><a href="#">Jaipur GPO</a></td>
+                            <td>Jaipur</td>
+                            <td>2023-06-12</td>
+                            <td>60/100</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Lucknow GPO</a></td>
+                            <td>Lucknow</td>
+                            <td>2023-05-01</td>
+                            <td>45/100</td>
+                        </tr>
+                         <tr>
+                            <td><a href="#">Patna GPO</a></td>
+                            <td>Patna</td>
+                            <td>2023-04-18</td>
+                            <td>80/100</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Bhopal GPO</a></td>
+                            <td>Bhopal</td>
+                            <td>2023-03-05</td>
+                            <td>72/100</td>
+                        </tr>
+                       <tr>
+                            <td><a href="#">Coimbatore Head Post Office</a></td>
+                            <td>Coimbatore</td>
+                            <td>2023-02-22</td>
+                            <td>98/100</td>
+                        </tr>
+                         <tr>
+                            <td><a href="#">Vadodara Head Post Office</a></td>
+                            <td>Vadodara</td>
+                            <td>2023-01-10</td>
+                            <td>55/100</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Surat Head Post Office</a></td>
+                            <td>Surat</td>
+                            <td>2022-12-01</td>
+                            <td>38/100</td>
+                        </tr>
+                        <!-- More rows here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+     <script>
+    const circleFilterButton = document.getElementById('circleFilter');
+    const circleOptionsDiv = document.getElementById('circleOptions');
+    let circleOptionsVisible = false; // Track visibility
+
+    const circleList = [
+        "APS CIRCLE", "Assam Circle", "Bihar Circle", "Chattisgarh Circle",
+        "Delhi Circle", "Gujarat Circle", "Haryana Circle", "Jammukashmir Circle",
+        "Jharkhand Circle", "Karnataka Circle", "Kerala Circle", "Madhya Pradesh Circle",
+        "Maharashtra Circle", "North Eastern Circle", "Odisha Circle", "Rajasthan Circle",
+        "Tamilnadu Circle", "Uttar Pradesh Circle", "West Bengal Circle"
+    ];
+
+    // Function to toggle visibility of the circle options
+    function toggleCircleOptions() {
+        circleOptionsVisible = !circleOptionsVisible; // Toggle the state
+
+        if (circleOptionsVisible) {
+            circleOptionsDiv.style.display = 'flex';
+            circleFilterButton.classList.add('active'); // Add 'active' class
+        } else {
+            circleOptionsDiv.style.display = 'none';
+            circleFilterButton.classList.remove('active'); // Remove 'active' class
+        }
+    }
+
+    // Event listener for the Circle filter button
+    circleFilterButton.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent the click from immediately closing the options
+        toggleCircleOptions(); // Call the toggle function
+    });
+
+    // Close the options when clicking outside the button and options
+    document.addEventListener('click', function(event) {
+        if (circleOptionsVisible && !circleOptionsDiv.contains(event.target) && event.target !== circleFilterButton) {
+            toggleCircleOptions(); // This will hide the options and remove the active class
+        }
+    });
+
+    // Generate Circle Options
+    circleList.forEach(circle => {
+        const button = document.createElement('button');
+        button.textContent = circle;
+        button.addEventListener('click', function() {
+            alert(`Filtering by: ${circle}`); // Replace with your filter logic
+            toggleCircleOptions(); // Hide options after selection
+        });
+        circleOptionsDiv.appendChild(button);
+    });
+    </script>
+</body>
+</html>

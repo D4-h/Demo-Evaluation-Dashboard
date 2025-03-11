@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi GPO Evaluation Table - MAILS</title>
+    <style>
+        /* Color Palette (Based on description) */
+        :root {
+            --bg-offwhite: #F2F0E6;
+            --brand-red: #E64946;
+            --brand-yellow: #FFDA6D;
+            --text-darkgray: #4A4A4A;
+            --border-lightgray: #D3D3D3;
+            --bg-lightgray: #F8F8F8;
+            --bg-hover: #F0F0F0;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: var(--bg-offwhite);
+            margin: 0;
+            padding: 0;
+            color: var(--text-darkgray);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-lightgray);
+        }
+
+        th {
+            background-color: var(--bg-offwhite); /* Light gray background for header */
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--bg-lightgray); /* Slightly darker gray for even rows */
+        }
+
+        /* Add rounded corners to the first and last cells in the header row */
+        th:first-child {
+            border-top-left-radius: 8px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 8px;
+        }
+
+        /* Add rounded corners to the last row's cells */
+        tr:last-child td:first-child {
+            border-bottom-left-radius: 8px;
+        }
+
+        tr:last-child td:last-child {
+            border-bottom-right-radius: 8px;
+        }
+
+        /* Style for "Yes/No" columns */
+        .yes-no {
+            text-align: center;  /* Center "Yes" and "No" horizontally */
+        }
+
+        .yes-no.yes {
+            color: green;
+        }
+
+        .yes-no.no {
+            color: red;
+        }
+         .numerical-value {
+            text-align: center; /* Center numerical values horizontally */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Delhi GPO Evaluation Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>HO</th>
+                    <th>ID</th>
+                    <th>Section</th>
+                    <th>Parameter</th>
+                    <th>Quantifiable Questions</th>
+                    <th>Response Type</th>
+                    <th>Response</th>
+                    <th>Reason for 'Yes'</th>
+                    <th>Reason for 'No'</th>
+                    <th>Additional Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>DGPO</td>
+                    <td>B.1.1</td>
+                    <td>Mails</td>
+                    <td>Counter Operations</td>
+                    <td>Was the performance of the counters examined on the day of visit using the Supervisor Dashboard in the CSI environment?</td>
+                    <td>Yes/No</td>
+                    <td class="yes-no yes">Yes</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>DGPO</td>
+                    <td>B.2.1</td>
+                    <td>Mails</td>
+                    <td>Franking Machine Management</td>
+                    <td>How many departmental RMFMs are currently in use in the office?</td>
+                    <td>Numerical Value</td>
+                    <td class="numerical-value">2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>DGPO</td>
+                    <td>B.2.2</td>
+                    <td>Mails</td>
+                    <td>Franking Machine Management</td>
+                    <td>Are the history sheets being maintained for each machine separately?</td>
+                    <td>Yes/No</td>
+                    <td class="yes-no yes">Yes</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>DGPO</td>
+                    <td>B.2.3</td>
+                    <td>Mails</td>
+                    <td>Franking Machine Management</td>
+                    <td>If the office is having RMFM on a dick-charge basis, is the minimum number of transactions being achieved?</td>
+                    <td>Yes/No</td>
+                    <td class="yes-no yes">Yes</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>DGPO</td>
+                    <td>B.2.4</td>
+                    <td>Mails</td>
+                    <td>Franking Machine Management</td>
+                    <td>How many private RMFMs are registered with the office? The details be checked and see if they are on record.</td>
+                    <td>Numerical Value</td>
+                    <td class="numerical-value">0</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>DGPO</td>
+                    <td>B.2.5</td>
+                    <td>Mails</td>
+                    <td>Franking Machine Management</td>
+                    <td>Has the error book for both private and departmental machines maintained for cancelled franked articles been verified since the last inspection?</td>
+                    <td>Yes/No</td>
+                    <td class="yes-no yes">Yes</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

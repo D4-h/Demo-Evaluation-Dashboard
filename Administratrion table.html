@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi GPO Evaluation Table</title>
+    <style>
+        /* Primary Colors */
+        :root {
+            --background-base-color: #FFF8E7;
+            --primary-text-color: #78350F;
+            --accent-border-color: #92400E;
+
+            /* Secondary Colors */
+            --header-background: #F7EDC7;
+            --alternate-row-background: #FFFBEB;
+            --hover-state: #FEF3C7;
+            --inner-borders-dividers: #D4A86C;
+
+            /* Interactive Elements */
+            --button-background: #FFF8E7;
+            --button-hover: #FEF3C7;
+            --button-border: #92400E;
+            --selected-state: #F7EDC7;
+
+            /* Additional Accent Colors */
+            --call-to-action: #B45309;
+            --success-confirmation: #065F46;
+            --alert-important: #9C2424;
+
+            /* Typography */
+            --font-family: "Times New Roman", Georgia, serif;
+            --font-color-primary: #78350F;
+            --font-color-emphasis: #5F2A08;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-base-color);
+            margin: 0;
+            padding: 0;
+            color: var(--font-color-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+            padding-top: 80px;
+            background-color: var(--background-base-color); /* Apply base color */
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--font-color-primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border-bottom: 1px solid var(--inner-borders-dividers);
+            color: var(--font-color-primary);
+        }
+
+        th {
+            background-color: var(--header-background);
+            font-weight: bold;
+            color: var(--font-color-emphasis);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--alternate-row-background);
+        }
+
+        th:first-child {
+            border-top-left-radius: 8px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 8px;
+        }
+
+        tr:last-child td:first-child {
+            border-bottom-left-radius: 8px;
+        }
+
+        tr:last-child td:last-child {
+            border-bottom-right-radius: 8px;
+        }
+
+        .yes-no {
+            text-align: center;
+        }
+
+        .yes-no.yes {
+            color: var(--success-confirmation); /* Use success color */
+        }
+
+        .yes-no.no {
+            color: var(--alert-important); /* Use alert color */
+        }
+
+        .year-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid var(--button-border);
+            border-radius: 5px;
+            background-color: var(--button-background);
+            color: var(--font-color-primary);
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            padding-right: 25px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z' fill='%2378350F'/%3E%3C/svg%3E"); /* Amber arrow */
+            background-repeat: no-repeat;
+            background-position: right 8px top 50%;
+            background-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        select option {
+            font-size: 16px;
+        }
+
+        .compare-button-container {
+            text-align: right;
+        }
+
+        .compare-button {
+            padding: 10px 20px;
+            border: 1px solid var(--button-border);
+            border-radius: 5px;
+            background-color: var(--button-background);
+            color: var(--font-color-primary);
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .compare-button:hover {
+            background-color: var(--button-hover);
+        }
+
+        #year2023,
+        #year2024,
+        #year2025 {
+            display: none;
+            text-align: center;
+        }
+
+        #year2024.active,
+        #year2023.active,
+        #year2025.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Delhi GPO Evaluation Table</h2>
+
+        <!-- Year Selection Dropdown and Compare Button -->
+        <div class="year-selector">
+            <select id="yearSelect" onchange="showYear(this.value)">
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2025">2025</option>
+            </select>
+            <div class="compare-button-container">
+                <button class="compare-button" onclick="window.location.href='COMPARE TABLE.html'">Compare Reports</button>
+            </div>
+        </div>
+
+        <!-- Content for 2023 -->
+        <div id="year2023">
+            <iframe src="https://drive.google.com/file/d/1zY0koWJvXr89ZN0wZnk9X8YSslmqkfem/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
+
+        <!-- Content for 2024 -->
+        <div id="year2024" class="active">
+            <table>
+                <thead>
+                    <tr>
+                        <th>HO</th>
+                        <th>ID</th>
+                        <th>Section</th>
+                        <th>Parameter</th>
+                        <th>Questions</th>
+                        <th>Response Type</th>
+                        <th>Response</th>
+                        <th>Reason for 'Yes'</th>
+                        <th>Reason for 'No'</th>
+                        <th>Additional Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.1.1</td>
+                        <td>Administration</td>
+                        <td>Post Office Infrastructure</td>
+                        <td>Check the accommodation - Is the building structurally sound, with no visible cracks, leaning, or signs of damage?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.1.2</td>
+                        <td>Administration</td>
+                        <td>Post Office Infrastructure</td>
+                        <td>Check the accommodation - Are the walls, floors, ceilings, staircases etc are in good condition?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no no">No</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.1.3</td>
+                        <td>Administration</td>
+                        <td>Post Office Infrastructure</td>
+                        <td>Are fire safety measures (e.g., fire extinguishers, smoke detectors, fire exits) in place and functional?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.1.4</td>
+                        <td>Administration</td>
+                        <td>Post Office Infrastructure</td>
+                        <td>Are there adequate emergency exits, and are they clearly marked and unobstructed?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no no">No</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.1.5</td>
+                        <td>Administration</td>
+                        <td>Post Office Infrastructure</td>
+                        <td>Is there proper waste disposal and drainage systems in place?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.1.6</td>
+                        <td>Administration</td>
+                        <td>Post Office Infrastructure</td>
+                        <td>Are there sufficient functional toilets, bathrooms, and washing facilities?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.2.1</td>
+                        <td>Administration</td>
+                        <td>Working Environment</td>
+                        <td>Is there proper ventilation and natural lighting in all rooms?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.2.2</td>
+                        <td>Administration</td>
+                        <td>Working Environment</td>
+                        <td>Does the layout support efficient workflow?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.2.3</td>
+                        <td>Administration</td>
+                        <td>Working Environment</td>
+                        <td>Are there special provisions for differently-abled individuals?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.1</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>Is there a Helpdesk available?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.2</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>Can the Helpdesk access all required information online?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.3</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>Is the Helpdesk fully equipped with necessary forms and ready reckoners?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.4</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>Is there a self-service kiosk available & functional?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no no">No</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.5</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>Are all counter assistants competent in handling customer queries and services?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.6</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>Is the Notice of Business Hours clearly displayed?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.7</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>Are the counters arranged logically as per the available space?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.8</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>Are forms, records, and stock properly segregated?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.9</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>Are Job Aids available on the desktop of all counters?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.10</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>Are process documents circulated by the Directorate available in soft or hard copy with Counter Pas and Supervisors?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.11</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>Is Post Office staff aware of the Infosys Help Desk number and mail ID?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.12</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>Of staff interviewed, how many rate the support provided by the Infosys Hand Holding/Support team as satisfactory or above?</td>
+                        <td>Numerical Value</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.13</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>Is the Postmaster taking a printout of office accounts ledgers and cross-verifying transactions with LOT on a daily basis?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.14</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>How many major issues are pending with the Helpdesk of Infosys, as reported by staff?</td>
+                        <td>Numerical Value</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.3.15</td>
+                        <td>Administration</td>
+                        <td>Customer Service & Information</td>
+                        <td>How many pending tickets exist where a solution has been provided but the tickets are pending closure on the part of the Post Office?</td>
+                        <td>Numerical Value</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.4.1</td>
+                        <td>Administration</td>
+                        <td>Cleanliness & Hygiene</td>
+                        <td>Are the counters and office spaces clean?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.4.2</td>
+                        <td>Administration</td>
+                        <td>Cleanliness & Hygiene</td>
+                        <td>Does the Postmaster take a special interest in cleanliness?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.5.1</td>
+                        <td>Administration</td>
+                        <td>Customer Support</td>
+                        <td>Is there a sufficient stock of essential forms for public use?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.5.2</td>
+                        <td>Administration</td>
+                        <td>Customer Support</td>
+                        <td>Are counter assistants aware of the importance of good public relations?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DGPO</td>
+                        <td>A.5.3</td>
+                        <td>Administration</td>
+                        <td>Customer Support</td>
+                        <td>Are special arrangements available for senior citizens?</td>
+                        <td>Yes/No</td>
+                        <td class="yes-no yes">Yes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Content for 2025 -->
+        <div id="year2025">
+            <!-- This will be blank -->
+        </div>
+
+    </div>
+
+    <script>
+        function showYear(year) {
+            // Hide all year contents
+            document.getElementById('year2023').classList.remove('active');
+            document.getElementById('year2024').classList.remove('active');
+            document.getElementById('year2025').classList.remove('active');
+
+            // Show the selected year's content
+            document.getElementById('year' + year).classList.add('active');
+        }
+    </script>
+</body>
+</html>

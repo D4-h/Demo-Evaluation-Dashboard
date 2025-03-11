@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi GPO Evaluation Report</title>
+    <style>
+        /* Theme:  Amber/Brown Inspired by Old Post Office */
+        :root {
+            --bg-offwhite: #FFF8E7; /* Light amber */
+            --brand-red: #9C2424; /* Post Office red (for alerts/important) */
+            --brand-yellow: #B45309; /* Bright amber (call to action) */
+            --text-darkgray: #78350F; /* Dark amber/brown */
+            --border-lightgray: #92400E; /* Deep amber/brown */
+            --bg-lightgray: #FFFBEB; /* Very light amber */
+            --bg-hover: #FEF3C7; /* Slightly darker amber */
+            --link-blue: #0000EE;
+        }
+
+        body {
+            font-family: Georgia, serif; /* Serif font for classic look */
+            background-color: var(--bg-offwhite);
+            margin: 0;
+            padding: 0;
+            color: var(--text-darkgray);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #F7EDC7;  /* Light amber, slightly darker */
+            padding: 10px;
+            border-radius: 5px;
+
+        }
+
+        .header img {
+            width: 120px;
+            height: auto;
+            margin-right: 20px;
+            vertical-align: middle;
+        }
+
+        .profile-section {
+            width: 300px;
+            margin-right: 20px;
+        }
+
+        .profile-image {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .header h1 {
+            color: var(--brand-red);
+            font-size: 24px;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .select-year {
+            flex-shrink: 0;
+            text-align: right;
+        }
+
+        .details {
+            display: flex;
+        }
+
+        .post-office-info {
+            background-color: var(--bg-lightgray); /* Very light amber */
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border: 1px solid var(--border-lightgray); /* Deep amber/brown */
+        }
+
+        .post-office-info p {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .post-office-info a {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: var(--brand-yellow); /* Bright amber (call to action) */
+            color: var(--text-darkgray);
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            border: 1px solid var(--border-lightgray); /* Deep amber/brown */
+        }
+
+        .report-section {
+            flex-grow: 1;
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid var(--border-lightgray);
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .section-card {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--border-lightgray);
+            border-radius: 5px;
+            background-color: var(--bg-offwhite); /* Light amber */
+            color: var(--text-darkgray);
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-card:hover {
+            background-color: var(--bg-hover); /* Slightly darker amber */
+        }
+
+        .section-card h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: var(--text-darkgray);
+        }
+
+        .download-section {
+            text-align: right;
+        }
+
+        .download-section a {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #065F46; /* Deep green (success/confirmation) */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="https://images.seeklogo.com/logo-png/30/2/india-post-logo-png_seeklogo-304806.png" alt="India Post Logo" class="logo">
+        <h1>Delhi GPO Evaluation Report</h1>
+        <div class="select-year">
+            <label for="year">Select Year:</label>
+            <select id="year">
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="details">
+        <div class="profile-section">
+            <img src="https://static.toiimg.com/thumb/msid-47767228,width=1200,height=900/47767228.jpg" class="profile-image">
+            <div class="post-office-info">
+                <h2>Delhi GPO Information</h2>
+                <p><strong>Location:</strong> Delhi</p>
+                <p><strong>Address:</strong> Kashmere Gate, Delhi</p>
+                <p><strong>Operational Hours:</strong> 9:00 AM - 6:00 PM</p>
+                <p><strong>Staff Count:</strong> 50</p>
+                <p><strong>Services Offered:</strong> Mail delivery, Parcels, Savings schemes</p>
+                <p><strong>Total Grievances:</strong> 15</p>
+                <p><strong>Google Rating:</strong> 4.2</p>
+                <a href="#">Click to show full profile</a>
+            </div>
+        </div>
+
+        <div class="report-section">
+             <div class="download-section">
+                <a href="https://docs.google.com/spreadsheets/d/1aGP7ug_G9XdcBfD8cFPFDj9gcRYT0xjp/export?format=xlsx
+">Download Excel Report</a>
+            </div>
+
+            <h2>Evaluation Report 2024</h2>
+            <div class="sections">
+                <div class="section-card" onclick="window.location.href='Administratrion table.html'">
+                    <h3>Administration</h3>
+                    <p>7/10</p>
+                </div>
+                <div class="section-card" onclick="window.location.href='MAILS TABLE.html'">
+                    <h3>Mails</h3>
+                     <p>7/10</p>
+                </div>
+                <div class="section-card" onclick="alert('POSB Details')">
+                    <h3>POSB</h3>
+                    <p>7/10</p>
+                </div>
+                <div class="section-card" onclick="alert('PLI Details')">
+                    <h3>PLI</h3>
+                     <p>7/10</p>
+                </div>
+                <div class="section-card" onclick="alert('Business Development Details')">
+                    <h3>Business Development</h3>
+                     <p>7/10</p>
+                </div>
+                <div class="section-card" onclick="alert('Technology Management Details')">
+                    <h3>Technology Management</h3>
+                     <p>7/10</p>
+                </div>
+                <div class="section-card" onclick="alert('Financial Accounting Details')">
+                    <h3>Financial Accounting</h3>
+                     <p>7/10</p>
+                </div>
+                <div class="section-card" onclick="alert('Grievance Details')">
+                    <h3>Grievance</h3>
+                     <p>7/10</p>
+                </div>
+                <div class="section-card" onclick="alert('Service Performance Details')">
+                    <h3>Service Performance</h3>
+                     <p>7/10</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
